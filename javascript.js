@@ -5,13 +5,13 @@ function getComputerChoice() {
   let randomValue = Math.random();
   if (randomValue < 0.33) {
     return "rock";
-  } else if (randomValue > 0.67) {
+  } else if (randomValue >= 0.67) {
     return "paper";
   } else {
     return "scissors";
   }
 }
-
+/*
 function getHumanChoice() {
   let answer;
   while (!(answer === "rock" || answer === "paper" || answer === "scissors")) {
@@ -20,7 +20,7 @@ function getHumanChoice() {
   }
   return answer;
 }
-
+*/
 function playRound(humanChoice, computerChoice) {
   if (humanChoice === computerChoice) {
     computerChoice = capitalize(computerChoice);
@@ -45,28 +45,38 @@ function playRound(humanChoice, computerChoice) {
 function capitalize(word) {
   return word.charAt(0).toUpperCase() + word.slice(1);
 }
-
+/*
 function playGame() {
   let humanSelection;
   let computerSelection;
-  for (i = 0; i < 5; i++) {
-    humanSelection = getHumanChoice();
-    computerSelection = getComputerChoice();
-    playRound(humanSelection, computerSelection);
-  }
+  //for (i = 0; i < 5; i++) {
+  humanSelection = getHumanChoice();
+  computerSelection = getComputerChoice();
+  playRound(humanSelection, computerSelection);
+  //}
   if (humanScore === computerScore) {
     return console.log(
-      `Draw with a score of ${humanScore} to ${computerScore}!`
+      `Draw with a score of ${humanScore} to ${computerScore}!`,
     );
   } else if (humanScore > computerScore) {
     return console.log(
-      `You win the game with a score of ${humanScore} to ${computerScore}!`
+      `You win the game with a score of ${humanScore} to ${computerScore}!`,
     );
   } else {
     return console.log(
-      `You lose the game with a score of ${humanScore} to ${computerScore}!`
+      `You lose the game with a score of ${humanScore} to ${computerScore}!`,
     );
   }
 }
+*/
+//playGame();
 
-playGame();
+const buttons = document.querySelectorAll("button");
+
+buttons.forEach((button) => {
+  button.addEventListener("click", () => {
+    const humanSelection = String(button.id);
+    const computerSelection = getComputerChoice();
+    playRound(humanSelection, computerSelection);
+  });
+});
