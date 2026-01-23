@@ -11,20 +11,11 @@ function getComputerChoice() {
     return "scissors";
   }
 }
-/*
-function getHumanChoice() {
-  let answer;
-  while (!(answer === "rock" || answer === "paper" || answer === "scissors")) {
-    answer = prompt("rock, paper or scissors?");
-    answer = answer.toLowerCase();
-  }
-  return answer;
-}
-*/
+
 function playRound(humanChoice, computerChoice) {
   if (humanChoice === computerChoice) {
     computerChoice = capitalize(computerChoice);
-    return console.log(`Draw! You both chose ${computerChoice}.`);
+    return `Draw! You both chose ${computerChoice}.`;
   } else if (
     (humanChoice === "rock" && computerChoice === "paper") ||
     (humanChoice === "paper" && computerChoice === "scissors") ||
@@ -33,12 +24,12 @@ function playRound(humanChoice, computerChoice) {
     humanChoice = capitalize(humanChoice);
     computerChoice = capitalize(computerChoice);
     computerScore += 1;
-    return console.log(`You lose! ${computerChoice} beats ${humanChoice}.`);
+    return `You lose! ${computerChoice} beats ${humanChoice}.`;
   } else {
     humanChoice = capitalize(humanChoice);
     computerChoice = capitalize(computerChoice);
     humanScore += 1;
-    return console.log(`You win! ${humanChoice} beats ${computerChoice}.`);
+    return `You win! ${humanChoice} beats ${computerChoice}.`;
   }
 }
 
@@ -72,11 +63,12 @@ function playGame() {
 //playGame();
 
 const buttons = document.querySelectorAll("button");
+const roundResult = document.querySelector("#roundResult");
 
 buttons.forEach((button) => {
   button.addEventListener("click", () => {
     const humanSelection = String(button.id);
     const computerSelection = getComputerChoice();
-    playRound(humanSelection, computerSelection);
+    roundResult.textContent = playRound(humanSelection, computerSelection);
   });
 });
