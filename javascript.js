@@ -36,31 +36,6 @@ function playRound(humanChoice, computerChoice) {
 function capitalize(word) {
   return word.charAt(0).toUpperCase() + word.slice(1);
 }
-/*
-function playGame() {
-  let humanSelection;
-  let computerSelection;
-  //for (i = 0; i < 5; i++) {
-  humanSelection = getHumanChoice();
-  computerSelection = getComputerChoice();
-  playRound(humanSelection, computerSelection);
-  //}
-  if (humanScore === computerScore) {
-    return console.log(
-      `Draw with a score of ${humanScore} to ${computerScore}!`,
-    );
-  } else if (humanScore > computerScore) {
-    return console.log(
-      `You win the game with a score of ${humanScore} to ${computerScore}!`,
-    );
-  } else {
-    return console.log(
-      `You lose the game with a score of ${humanScore} to ${computerScore}!`,
-    );
-  }
-}
-*/
-//playGame();
 
 const buttons = document.querySelectorAll("button");
 const roundResult = document.querySelector("#roundResult");
