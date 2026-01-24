@@ -65,12 +65,24 @@ function playGame() {
 const buttons = document.querySelectorAll("button");
 const roundResult = document.querySelector("#roundResult");
 const runningScore = document.querySelector("#runningScore");
+const winnerAnnouncement = document.querySelector("#winnerAnnouncement");
 
 buttons.forEach((button) => {
-  button.addEventListener("click", () => {
-    const humanSelection = String(button.id);
-    const computerSelection = getComputerChoice();
-    roundResult.textContent = playRound(humanSelection, computerSelection);
-    runningScore.textContent = `Your Score: ${humanScore} Computer Score: ${computerScore}`;
+  button.addEventListener("click", function playGame(event) {
+    if (humanScore >= 5 || computerScore >= 5) {
+      button.removeEventListener;
+    } else {
+      const humanSelection = String(button.id);
+      const computerSelection = getComputerChoice();
+      roundResult.textContent = playRound(humanSelection, computerSelection);
+      runningScore.textContent = `Your Score: ${humanScore} Computer Score: ${computerScore}`;
+      if (humanScore >= 5) {
+        winnerAnnouncement.textContent = `You win the game with a score of ${humanScore} to ${computerScore}!`;
+        button.removeEventListener("click", playGame);
+      } else if (computerScore >= 5) {
+        winnerAnnouncement.textContent = `You lose the game with a score of ${humanScore} to ${computerScore}!`;
+        button.removeEventListener("click", playGame);
+      }
+    }
   });
 });
